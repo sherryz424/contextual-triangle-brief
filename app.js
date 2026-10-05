@@ -4,7 +4,7 @@ function shell(content){return '<section class="stage"><div class="design">'+con
 function rules(){return '<div class="rule-h"></div><div class="rule-v"></div>'}
 function home(){return shell('<img class="home-bg" src="'+A+'main/image-1.png" alt="">'+rules()+'<div class="title">Sherry Zhang</div><div class="title home-title">Contextual Triangle Brief</div><div class="coordinates">31°14′N, 121°29′E</div><img class="home-ring-image" src="'+A+'figma/home-ring.png" alt=""><div class="home-hotspot" aria-label="Open navigation"></div><nav class="nav-options"><a href="#/universe">This Universe&nbsp;&nbsp;本宇宙</a><a href="#/parallel">Parallel Universes&nbsp;&nbsp;平行宇宙</a><a href="#/metaverse">The Metaverse&nbsp;&nbsp;元宇宙</a></nav>')}
 function universe(){
- var strip='<img class="universe-strip" src="'+A+'figma/universe-strip.png" alt="">';
+ var strip='<img class="universe-strip" src="'+A+'figma/universe-strip-half.png" alt="">';
  return shell(rules()+'<a class="section-title title title-link" href="#/">This Universe&nbsp;&nbsp;本宇宙</a><div class="intro universe-intro">Work that I am proud of<br>Examples of work that I have already created, or helped create, which I am proud of.</div><div class="universe-orb a"></div><div class="universe-orb b"></div><div class="universe-orb c"></div><div class="work-track-wrap"><div class="work-track"><div class="work-sequence">'+strip+'</div><div class="work-sequence" aria-hidden="true">'+strip+'</div></div></div>');
 }
 function parallel(){
