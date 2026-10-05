@@ -14,7 +14,7 @@ function universe(){
  ['Spatial / Material Study','Installation Documentation','A visual archive of material, spatial and technical experiments developed across recent projects.','']
  ];
  var one=cards.map(function(c,i){return '<article class="work-card"><img src="'+A+workImgs[i%workImgs.length]+'" alt=""><div class="shade"></div><div class="work-copy"><h2>'+c[0]+'</h2><p>'+c[1]+'</p><p>'+c[2]+'</p>'+(c[3]?'<a href="'+c[3]+'" target="_blank" rel="noreferrer">Video Link</a>':'')+'</div></article>'}).join('');
- return shell(back()+rules()+'<div class="section-title title">this universe&nbsp;&nbsp;本宇宙</div><div class="intro">Work that I am proud of<br>Examples of work that I have already created, or helped create, which I am proud of.</div><div class="universe-orb a"></div><div class="universe-orb b"></div><div class="universe-orb c"></div><div class="work-track-wrap"><div class="work-track">'+one+one+'</div></div>');
+ return shell(back()+rules()+'<div class="section-title title">this universe&nbsp;&nbsp;本宇宙</div><div class="intro universe-intro">Work that I am proud of<br>Examples of work that I have already created, or helped create, which I am proud of.</div><div class="universe-orb a"></div><div class="universe-orb b"></div><div class="universe-orb c"></div><div class="work-track-wrap"><div class="work-track">'+one+one+'</div></div>');
 }
 function parallel(){
  var data=[
