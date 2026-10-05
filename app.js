@@ -1,0 +1,31 @@
+const A='./public/assets/';
+const workImgs=['work/1.png','work/4.jpg','work/7.png','work/10.jpg','work/13.jpg','work/18.png'];
+const metaImgs=['meta/1.png','meta/4.png','meta/7.png','meta/10.png','meta/13.png','meta/16.png','meta/18.png','meta/20.png'];
+const refImgs=['reference/1.png','reference/2.png','reference/3.png','reference/4.png','reference/5.png','reference/6.png','reference/7.png','reference/8.png'];
+function shell(content){return '<section class="stage"><div class="design">'+content+'</div></section>'}
+function rules(){return '<div class="rule-h"></div><div class="rule-v"></div>'}
+function back(){return '<a class="back" href="#/">←</a>'}
+function home(){return shell('<img class="home-bg" src="'+A+'main/image-1.png" alt="">'+rules()+'<div class="title">sherry Zhang</div><div class="title home-title">Contextual Triangle Brief</div><div class="coordinates">31°14′N, 121°29′E</div><div class="home-ring"><span class="pointer"></span></div><div class="home-hotspot" aria-label="Open navigation"></div><nav class="nav-options"><a href="#/universe">this universe&nbsp;&nbsp;本宇宙</a><a href="#/parallel">Parallel Universes&nbsp;&nbsp;平行宇宙</a><a href="#/metaverse">the metaverse&nbsp;&nbsp;元宇宙</a></nav>')}
+function universe(){
+ var cards=[
+ ['The Post-Linguistic Era','Nonverbal Expression | Tactile Instrument | Performance Art | Interactive Installation','An interactive sound installation built from custom stainless-steel gesture plates, capacitive sensing and synthesized sound. The work explores communication, ambiguity and the loneliness produced by failed understanding.','https://youtu.be/MjTHjzha6Yo'],
+ ['Signal Lag','Installation | Embedded Electronics | Emotional Asymmetry | Controlled Speech','A media installation combining character displays, TFT modules and projected interview footage. Fragmented police task messages and delayed family replies reveal the emotional architecture of distance, protocol and restrained communication.','https://youtu.be/PzeDgDzhNWI'],
+ ['Synthetic Plant Cultivation Platform','Architectural & Internal Structure Design','A speculative cultivation platform combining modular environments, automated resource circulation and remote monitoring for synthetic plant ecologies.',''],
+ ['Spatial / Material Study','Installation Documentation','A visual archive of material, spatial and technical experiments developed across recent projects.','']
+ ];
+ var one=cards.map(function(c,i){return '<article class="work-card"><img src="'+A+workImgs[i%workImgs.length]+'" alt=""><div class="shade"></div><div class="work-copy"><h2>'+c[0]+'</h2><p>'+c[1]+'</p><p>'+c[2]+'</p>'+(c[3]?'<a href="'+c[3]+'" target="_blank" rel="noreferrer">Video Link</a>':'')+'</div></article>'}).join('');
+ return shell(back()+rules()+'<div class="section-title title">this universe&nbsp;&nbsp;本宇宙</div><div class="intro">Work that I am proud of<br>Examples of work that I have already created, or helped create, which I am proud of.</div><div class="universe-orb a"></div><div class="universe-orb b"></div><div class="universe-orb c"></div><div class="work-track-wrap"><div class="work-track">'+one+one+'</div></div>');
+}
+function parallel(){
+ var data=[
+ ['Holly Herndon & Mat Dryhurst','The Call, 2024/10','The Call centres on new protocols and materials for the creation of choral AI models. Community choirs become participants in a process that links collective voice, model training and cultural authorship.'],
+ ['Dunne & Raby','United Micro Kingdoms, 2012/13','United Micro Kingdoms presents a fictional future for the United Kingdom through competing social, ideological, technological and economic models.'],
+ ['Simon Heijdens','Lightweeds, 2005','Lightweeds is an ecosystem of living digital plants whose projected silhouettes respond to weather, movement and the changing use of architecture.'],
+ ['Truth & Beauty','OECD Better Life Index, 2010','An interactive visualisation for comparing wellbeing beyond GDP, translating multiple dimensions and user-defined weights into a coherent visual ranking.']
+ ];
+ var slots=data.map(function(d,i){var imgs=refImgs.slice(i*2,i*2+2).map(function(x){return '<img src="'+A+x+'" alt="">'}).join('');return '<div class="slot" data-slot="'+i+'"><div class="parallel-panel">'+imgs+'<p><strong>'+d[0]+' — '+d[1]+'</strong></p><p>'+d[2]+'</p></div><div class="parallel-label">'+d[0]+' '+d[1]+'</div><div class="parallel-dot"></div></div>'}).join('');
+ return shell(back()+rules()+'<div class="section-title title">Parallel Universes&nbsp;&nbsp;平行宇宙</div><div class="intro">Work of others that I wish I’d made<br>Examples of work not created by myself which represent the kind of work I would love to make myself.</div><div class="parallel-grid">'+slots+'</div>');
+}
+function metaverse(){return shell(back()+rules()+'<div class="section-title title">the metaverse&nbsp;&nbsp;元宇宙</div><div class="intro">Things outside of work that I think are interesting<br>Almost everything that I am passionate about, or find interesting, even if it doesn’t currently relate to my work.</div><div class="meta-ring"><div class="meta-item i1">science fiction & film<img src="'+A+metaImgs[0]+'" alt=""></div><div class="meta-item i2">crime & deduction<img src="'+A+metaImgs[2]+'" alt=""></div><div class="meta-item i3">concert & Live house<img src="'+A+metaImgs[4]+'" alt=""></div><div class="meta-item i4">animation<img src="'+A+metaImgs[6]+'" alt=""></div><div class="meta-item i5">Photography<img src="'+A+metaImgs[7]+'" alt=""></div></div>')}
+function render(){var p=location.hash.replace('#','')||'/';document.getElementById('app').innerHTML=p==='/universe'?universe():p==='/parallel'?parallel():p==='/metaverse'?metaverse():home();document.querySelectorAll('.parallel-label').forEach(function(el){el.addEventListener('click',function(){var slot=el.closest('.slot');document.querySelectorAll('.slot').forEach(function(s){if(s!==slot){s.classList.remove('open');var q=s.querySelector('.parallel-panel');if(q)q.classList.remove('open')}});slot.classList.toggle('open');slot.querySelector('.parallel-panel').classList.toggle('open')})})}
+window.addEventListener('hashchange',render);render();
